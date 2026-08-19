@@ -1,0 +1,147 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Postulaciones listas — Bianca Dondero</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#fff; --ink:#1f2733; --muted:#66707e; --line:#e6e9f0;
+    --green:#16a34a; --amber:#d97706; --gray:#64748b; --accent:#2563eb;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0f141b;--card:#171e28;--ink:#e7ecf3;--muted:#93a0b1;--line:#252d39;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.45}
+  header{padding:28px 20px 14px;max-width:1100px;margin:0 auto}
+  h1{margin:0 0 4px;font-size:1.55rem}
+  .sub{color:var(--muted);font-size:.95rem}
+  .howto{max-width:1100px;margin:8px auto 0;padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .howto b{color:var(--ink)}
+  .bar{max-width:1100px;margin:16px auto 0;padding:0 20px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .bar input{flex:1;min-width:180px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:.95rem}
+  .bar button{padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);cursor:pointer;font-size:.9rem}
+  .counter{color:var(--muted);font-size:.9rem;white-space:nowrap}
+  .wrap{max-width:1100px;margin:0 auto 40px;padding:0 20px}
+  .grid{margin:10px 0 26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .grouphead{margin:22px 0 2px;font-size:1.08rem;font-weight:700;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+  .grouphead span{font-weight:400;font-size:.85rem;color:var(--muted)}
+  .grouphead.rec{color:var(--green)} .grouphead.reach{color:var(--amber)}
+  .empty{color:var(--muted);font-size:.9rem;padding:4px 0 8px}
+  .card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gray);border-radius:14px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;transition:opacity .2s}
+  .card.hi{border-left-color:var(--green)} .card.mid{border-left-color:var(--amber)} .card.lo{border-left-color:var(--gray)}
+  .card.sent{opacity:.45}
+  .role{font-weight:650;font-size:1.05rem;margin:0}
+  .co{color:var(--muted);font-size:.9rem}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;font-size:.78rem}
+  .tag{background:rgba(127,127,127,.12);padding:2px 8px;border-radius:999px;color:var(--muted)}
+  .fit{font-weight:700;padding:2px 9px;border-radius:999px;color:#fff;font-size:.8rem}
+  .fit.hi{background:var(--green)} .fit.mid{background:var(--amber)} .fit.lo{background:var(--gray)}
+  .flag{color:var(--amber);font-size:.82rem}
+  .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+  .btns a{flex:1 1 auto;text-align:center;text-decoration:none;font-size:.85rem;padding:8px 10px;border-radius:9px;border:1px solid var(--line);color:var(--ink);background:transparent;white-space:nowrap}
+  .btns a.apply{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;flex-basis:100%}
+  .foot{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:.85rem;color:var(--muted)}
+  .foot input{width:17px;height:17px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:0 20px 30px}
+</style>
+
+<header>
+  <h1>📮 Postulaciones listas — Bianca Dondero</h1>
+  <div class="sub"><span id="ncount">10</span> postulaciones listas para enviar · generado 2026-08-18</div>
+  <div class="howto">
+    <b>Cómo usar:</b> por cada oferta, abrí el aviso, bajá tu <b>CV</b> y tu <b>carta</b> (PDF),
+    y apretá <b>Aplicar</b> (te lleva a LinkedIn para postular; adjuntá ahí el CV y la carta).
+    Tildá <b>Enviado</b> a medida que postulás — se guarda en este navegador.
+    ⚠️ = revisá la ubicación antes de aplicar (varias piden presencial fuera de Mar del Plata).
+  </div>
+</header>
+
+<div class="bar">
+  <input id="q" placeholder="Filtrar por empresa o rol…">
+  <button id="hideSent">Ocultar enviadas</button>
+  <span class="counter" id="counter">0 de 10 enviadas</span>
+</div>
+
+<div class="wrap">
+  <h2 class="grouphead rec">🟢 Recomendadas <span>remotas o viables — priorizá estas</span></h2>
+  <main class="grid" id="grid-rec"></main>
+  <h2 class="grouphead reach">🔴 Reach / ubicación a confirmar <span>piden Buenos Aires presencial o Madrid; solo si aceptan remoto</span></h2>
+  <main class="grid" id="grid-reach"></main>
+</div>
+<footer>Generado por Claude Code · ai-job-search · 2026-08-18</footer>
+
+<script>
+const APPS = [
+  {slug:"monks_analytics_jr", co:"Monks", role:"Junior Analytics Consultant - LATAM", fit:72, loc:"Remoto (LATAM)", sector:"Advertising / Tech", src:"https://www.linkedin.com/jobs/view/4446535201/", cv:"https://drive.google.com/file/d/1R-EGFb2JqqogLFiLJNRMv_8vdPwR7D0o/view", cover:"https://drive.google.com/file/d/1l4zyvOjy4fOJqrpzhPAG9CFD_sEQJzYy/view", flag:"Remoto/LATAM — confirmar modalidad"},
+  {slug:"patagonia_email_marketing", co:"Patagonia Digital", role:"Analista de Email Marketing", fit:65, loc:"Híbrido Rosario / #remoto", sector:"Agencia mkt digital", src:"https://www.linkedin.com/jobs/view/4452842580/", cv:"https://drive.google.com/file/d/13AUN5WN0OB-cIMREilLeS3q0BDNuP6lx/view", cover:"https://drive.google.com/file/d/1QJJhnjqmgpjxAb6e0_msvRaIGxa_ssHQ/view", flag:""},
+  {slug:"trafilea_growth_retention", co:"Trafilea", role:"Growth Marketer Retention - Apparel", fit:63, loc:"Remoto (USD)", sector:"E-commerce D2C", src:"https://www.linkedin.com/jobs/view/4454037620/", cv:"https://drive.google.com/file/d/1CeeqYi6-CmuNF0ligf1Ac8N27Puzy3nX/view", cover:"https://drive.google.com/file/d/1D7PwvaYJDYl0zv0CnUn0-5kx-Eoraram/view", flag:""},
+  {slug:"elevva_performance_jr", co:"Elevva", role:"Analista Jr de Performance", fit:52, loc:"Híbrido CABA", sector:"Consumer goods", src:"https://www.linkedin.com/jobs/view/4446939507/", cv:"https://drive.google.com/file/d/17UqRMyrsSQi3Jcnw1SSBsftn7GJX2M8A/view", cover:"https://drive.google.com/file/d/19raTBUPh0erYS2CRhESoD3W8_jNP1_77/view", flag:"Híbrido en CABA sin opción remota"},
+  {slug:"fever_senior_crm", co:"Fever", role:"Senior CRM Specialist", fit:50, loc:"Madrid", sector:"Entretenimiento / tech", src:"https://www.linkedin.com/jobs/view/4448415915/", cv:"https://drive.google.com/file/d/13To9i16g9cBzr2kmndGxUV3is38h4Gxp/view", cover:"https://drive.google.com/file/d/1O-U9knRyOQep0Zs4UmcUkkHbFRvimidu/view", flag:"Sede Madrid + rol senior (reach)"},
+  {slug:"digital_executive_email", co:"Digital Executive", role:"Email Marketing Specialist", fit:44, loc:"Remoto", sector:"Agencia DTC", src:"https://www.linkedin.com/jobs/view/4450240894/", cv:"https://drive.google.com/file/d/1F8-qgn0EbOElqbL0T6U1MNs6yu5XzE8b/view", cover:"https://drive.google.com/file/d/1oOGdlaBb7CmGLOXj_pzufYrwu6IqoqRg/view", flag:"Mid-senior + Klaviyo (reach)"},
+  {slug:"felix_crm_manager", co:"Félix", role:"CRM Manager", fit:44, loc:"Híbrido / Remoto-LatAm?", sector:"Fintech remesas", src:"https://www.linkedin.com/jobs/view/4434158534/", cv:"https://drive.google.com/file/d/1uNbzyORqhnES7dycO-5fQ99D5b-2nHWC/view", cover:"https://drive.google.com/file/d/1lF61f77cKQfpU19L2R47sFCxkyMmqqH0/view", flag:"Rol Manager (reach) + confirmar remoto"},
+  {slug:"bplay_marketing_digital", co:"bplay", role:"Analista de Marketing Digital", fit:42, loc:"Híbrido CABA", sector:"Juego online", src:"https://www.linkedin.com/jobs/view/4419650053/", cv:"https://drive.google.com/file/d/1LaqSWPEhzxQGpuFhOgiXmFboeuLFnd-Q/view", cover:"https://drive.google.com/file/d/1VeGo88PX8TAayWlHtVVCaTGaRRBPjXyM/view", flag:"Híbrido CABA (deal-breaker de ubicación)"},
+  {slug:"loreal_crm_senior_analyst", co:"L'Oréal", role:"CRM Senior Analyst - Digital Acquisition", fit:42, loc:"Presencial Gran BA", sector:"Consumo masivo", src:"https://www.linkedin.com/jobs/view/4449312295/", cv:"https://drive.google.com/file/d/1XZkdJp7T5GmBOHxq_hLX3zKPRugrVjlb/view", cover:"https://drive.google.com/file/d/1EW4oz_TIq_iUCjPBdGRAEeuG33eO4FGW/view", flag:"Presencial Gran BA + rol senior (reach)"},
+  {slug:"kirin_klaviyo_lifecycle", co:"Kirin", role:"Klaviyo Lifecycle Marketing Manager", fit:40, loc:"Buenos Aires", sector:"E-commerce DTC", src:"https://www.linkedin.com/jobs/view/4445279756/", cv:"https://drive.google.com/file/d/1pKQwQ4J64ufbzpuB8SATyAMv7LVx3VTx/view", cover:"https://drive.google.com/file/d/10_4vzr2Gw4MAt5-INuETwJ-KtJO__PIB/view", flag:"Rol Manager + Klaviyo hands-on; BA sin remoto"}
+];
+
+const esc = s => (s||"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const KEY = "handoff_bianca_sent";
+const sent = JSON.parse(localStorage.getItem(KEY) || "{}");
+const cls = f => f>=60?"hi":f>=45?"mid":"lo";
+
+const REACH = new Set(["elevva_performance_jr","fever_senior_crm","bplay_marketing_digital","loreal_crm_senior_analyst","kirin_klaviyo_lifecycle"]);
+function card(a){
+  const isSent = !!sent[a.slug], c = cls(a.fit);
+  const flag = a.flag ? `<div class="flag">⚠️ ${esc(a.flag)}</div>` : "";
+  const el = document.createElement("article");
+  el.className = `card ${c}${isSent?" sent":""}`;
+  el.innerHTML = `
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+      <div><p class="role">${esc(a.role)}</p><div class="co">${esc(a.co)}</div></div>
+      <span class="fit ${c}">${a.fit}</span>
+    </div>
+    <div class="meta"><span class="tag">${esc(a.loc)}</span><span class="tag">${esc(a.sector)}</span></div>
+    ${flag}
+    <div class="btns">
+      <a href="${esc(a.src)}" target="_blank" rel="noopener">📄 Ver aviso</a>
+      <a href="${esc(a.cv)}" target="_blank" rel="noopener">⬇️ CV</a>
+      <a href="${esc(a.cover)}" target="_blank" rel="noopener">⬇️ Carta</a>
+      <a class="apply" href="${esc(a.src)}" target="_blank" rel="noopener">🔗 Aplicar en LinkedIn</a>
+    </div>
+    <label class="foot"><input type="checkbox" ${isSent?"checked":""} data-slug="${a.slug}"> Enviado</label>`;
+  return el;
+}
+function render(){
+  const q = (document.getElementById("q").value||"").toLowerCase();
+  const hide = document.body.classList.contains("hideSent");
+  const gRec = document.getElementById("grid-rec"), gReach = document.getElementById("grid-reach");
+  gRec.innerHTML = ""; gReach.innerHTML = "";
+  const list = APPS.slice().sort((a,b)=> (!!sent[a.slug]-!!sent[b.slug]) || b.fit-a.fit );
+  let nRec = 0, nReach = 0;
+  list.forEach(a=>{
+    if(q && !(a.co+" "+a.role).toLowerCase().includes(q)) return;
+    const isSent = !!sent[a.slug];
+    if(hide && isSent) return;
+    if(REACH.has(a.slug)){ gReach.appendChild(card(a)); nReach++; }
+    else { gRec.appendChild(card(a)); nRec++; }
+  });
+  if(!nRec) gRec.innerHTML = '<div class="empty">Sin resultados en este grupo.</div>';
+  if(!nReach) gReach.innerHTML = '<div class="empty">Sin resultados en este grupo.</div>';
+  const n = Object.values(sent).filter(Boolean).length;
+  document.getElementById("counter").textContent = `${n} de ${APPS.length} enviadas`;
+  document.getElementById("ncount").textContent = APPS.length;
+}
+document.addEventListener("change", e=>{
+  if(e.target.matches("input[data-slug]")){
+    sent[e.target.dataset.slug] = e.target.checked;
+    localStorage.setItem(KEY, JSON.stringify(sent));
+    render();
+  }
+});
+document.getElementById("q").addEventListener("input", render);
+document.getElementById("hideSent").addEventListener("click", ()=>{
+  document.body.classList.toggle("hideSent");
+  document.getElementById("hideSent").textContent = document.body.classList.contains("hideSent")?"Mostrar todas":"Ocultar enviadas";
+  render();
+});
+render();
+</script>
