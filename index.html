@@ -24,7 +24,7 @@
   .grid{margin:10px 0 26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
   .grouphead{margin:22px 0 2px;font-size:1.08rem;font-weight:700;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
   .grouphead span{font-weight:400;font-size:.85rem;color:var(--muted)}
-  .grouphead.rec{color:var(--green)} .grouphead.reach{color:var(--amber)}
+  .grouphead.rec{color:var(--green)} .grouphead.reach{color:var(--amber)} .grouphead.mdp{color:#8b6ff0}
   .empty{color:var(--muted);font-size:.9rem;padding:4px 0 8px}
   .card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gray);border-radius:14px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;transition:opacity .2s}
   .card.hi{border-left-color:var(--green)} .card.mid{border-left-color:var(--amber)} .card.lo{border-left-color:var(--gray)}
@@ -57,22 +57,24 @@
 <header>
   <h1>💌 Postulaciones de Bianca Dondero</h1>
   <div class="dedication"><span class="heart">💗</span> De Gero para Bianca <span class="heart">💗</span></div>
-  <div class="sub"><span id="ncount">10</span> postulaciones listas para enviar · hechas con cariño 💕</div>
+  <div class="sub"><span id="ncount">17</span> postulaciones listas para enviar · hechas con cariño 💕</div>
   <div class="howto">
     <b>Cómo usar:</b> por cada oferta, abrí el aviso, bajá tu <b>CV</b> y tu <b>carta</b> (PDF),
-    y apretá <b>Aplicar</b> (te lleva a LinkedIn para postular; adjuntá ahí el CV y la carta).
+    y apretá <b>Aplicar</b> (te lleva al portal para postular; adjuntá ahí el CV y la carta).
     Tildá <b>Enviado</b> a medida que postulás — se guarda en este navegador.
-    ⚠️ = revisá la ubicación antes de aplicar (varias piden presencial fuera de Mar del Plata).
+    <br>🏙️ <b>En Mar del Plata</b> = presenciales en tu ciudad · 🟢 remotas/viables · 🔴 revisá la ubicación (piden Buenos Aires o Madrid).
   </div>
 </header>
 
 <div class="bar">
   <input id="q" placeholder="Filtrar por empresa o rol…">
   <button id="hideSent">Ocultar enviadas</button>
-  <span class="counter" id="counter">0 de 10 enviadas</span>
+  <span class="counter" id="counter">0 de 17 enviadas</span>
 </div>
 
 <div class="wrap">
+  <h2 class="grouphead mdp">🏙️ En Mar del Plata <span>presenciales en tu ciudad — sin viajar</span></h2>
+  <main class="grid" id="grid-mdp"></main>
   <h2 class="grouphead rec">🟢 Recomendadas <span>remotas o viables — priorizá estas</span></h2>
   <main class="grid" id="grid-rec"></main>
   <h2 class="grouphead reach">🔴 Reach / ubicación a confirmar <span>piden Buenos Aires presencial o Madrid; solo si aceptan remoto</span></h2>
@@ -82,16 +84,23 @@
 
 <script>
 const APPS = [
-  {slug:"monks_analytics_jr", co:"Monks", role:"Junior Analytics Consultant - LATAM", fit:72, loc:"Remoto (LATAM)", sector:"Advertising / Tech", src:"https://www.linkedin.com/jobs/view/4446535201/", cv:"https://drive.google.com/file/d/1R-EGFb2JqqogLFiLJNRMv_8vdPwR7D0o/view", cover:"https://drive.google.com/file/d/1l4zyvOjy4fOJqrpzhPAG9CFD_sEQJzYy/view", flag:"Remoto/LATAM — confirmar modalidad"},
-  {slug:"patagonia_email_marketing", co:"Patagonia Digital", role:"Analista de Email Marketing", fit:65, loc:"Híbrido Rosario / #remoto", sector:"Agencia mkt digital", src:"https://www.linkedin.com/jobs/view/4452842580/", cv:"https://drive.google.com/file/d/13AUN5WN0OB-cIMREilLeS3q0BDNuP6lx/view", cover:"https://drive.google.com/file/d/1QJJhnjqmgpjxAb6e0_msvRaIGxa_ssHQ/view", flag:""},
-  {slug:"trafilea_growth_retention", co:"Trafilea", role:"Growth Marketer Retention - Apparel", fit:63, loc:"Remoto (USD)", sector:"E-commerce D2C", src:"https://www.linkedin.com/jobs/view/4454037620/", cv:"https://drive.google.com/file/d/1CeeqYi6-CmuNF0ligf1Ac8N27Puzy3nX/view", cover:"https://drive.google.com/file/d/1D7PwvaYJDYl0zv0CnUn0-5kx-Eoraram/view", flag:""},
-  {slug:"elevva_performance_jr", co:"Elevva", role:"Analista Jr de Performance", fit:52, loc:"Híbrido CABA", sector:"Consumer goods", src:"https://www.linkedin.com/jobs/view/4446939507/", cv:"https://drive.google.com/file/d/17UqRMyrsSQi3Jcnw1SSBsftn7GJX2M8A/view", cover:"https://drive.google.com/file/d/19raTBUPh0erYS2CRhESoD3W8_jNP1_77/view", flag:"Híbrido en CABA sin opción remota"},
-  {slug:"fever_senior_crm", co:"Fever", role:"Senior CRM Specialist", fit:50, loc:"Madrid", sector:"Entretenimiento / tech", src:"https://www.linkedin.com/jobs/view/4448415915/", cv:"https://drive.google.com/file/d/13To9i16g9cBzr2kmndGxUV3is38h4Gxp/view", cover:"https://drive.google.com/file/d/1O-U9knRyOQep0Zs4UmcUkkHbFRvimidu/view", flag:"Sede Madrid + rol senior (reach)"},
-  {slug:"digital_executive_email", co:"Digital Executive", role:"Email Marketing Specialist", fit:44, loc:"Remoto", sector:"Agencia DTC", src:"https://www.linkedin.com/jobs/view/4450240894/", cv:"https://drive.google.com/file/d/1F8-qgn0EbOElqbL0T6U1MNs6yu5XzE8b/view", cover:"https://drive.google.com/file/d/1oOGdlaBb7CmGLOXj_pzufYrwu6IqoqRg/view", flag:"Mid-senior + Klaviyo (reach)"},
-  {slug:"felix_crm_manager", co:"Félix", role:"CRM Manager", fit:44, loc:"Híbrido / Remoto-LatAm?", sector:"Fintech remesas", src:"https://www.linkedin.com/jobs/view/4434158534/", cv:"https://drive.google.com/file/d/1uNbzyORqhnES7dycO-5fQ99D5b-2nHWC/view", cover:"https://drive.google.com/file/d/1lF61f77cKQfpU19L2R47sFCxkyMmqqH0/view", flag:"Rol Manager (reach) + confirmar remoto"},
-  {slug:"bplay_marketing_digital", co:"bplay", role:"Analista de Marketing Digital", fit:42, loc:"Híbrido CABA", sector:"Juego online", src:"https://www.linkedin.com/jobs/view/4419650053/", cv:"https://drive.google.com/file/d/1LaqSWPEhzxQGpuFhOgiXmFboeuLFnd-Q/view", cover:"https://drive.google.com/file/d/1VeGo88PX8TAayWlHtVVCaTGaRRBPjXyM/view", flag:"Híbrido CABA (deal-breaker de ubicación)"},
-  {slug:"loreal_crm_senior_analyst", co:"L'Oréal", role:"CRM Senior Analyst - Digital Acquisition", fit:42, loc:"Presencial Gran BA", sector:"Consumo masivo", src:"https://www.linkedin.com/jobs/view/4449312295/", cv:"https://drive.google.com/file/d/1XZkdJp7T5GmBOHxq_hLX3zKPRugrVjlb/view", cover:"https://drive.google.com/file/d/1EW4oz_TIq_iUCjPBdGRAEeuG33eO4FGW/view", flag:"Presencial Gran BA + rol senior (reach)"},
-  {slug:"kirin_klaviyo_lifecycle", co:"Kirin", role:"Klaviyo Lifecycle Marketing Manager", fit:40, loc:"Buenos Aires", sector:"E-commerce DTC", src:"https://www.linkedin.com/jobs/view/4445279756/", cv:"https://drive.google.com/file/d/1pKQwQ4J64ufbzpuB8SATyAMv7LVx3VTx/view", cover:"https://drive.google.com/file/d/10_4vzr2Gw4MAt5-INuETwJ-KtJO__PIB/view", flag:"Rol Manager + Klaviyo hands-on; BA sin remoto"}
+  {slug:"ncm_analista_marketing", co:"NCM Servicios", role:"Analista Jr. de Marketing", fit:76, loc:"Mar del Plata (presencial)", sector:"Marketing / PyME", src:"https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-analista-jr-de-marketing-part-time-presencial-en-mar-del-plata-B332900D077B30A761373E686DCF3405", cv:"cv/main_ncm_analista_marketing.pdf", cover:"cover_letters/cover_ncm_analista_marketing.pdf", flag:"Part-time; gap Meta Ads/Tienda Nube"},
+  {slug:"lila_asistente_marketing", co:"Lila Consultora", role:"Asistente de Marketing", fit:68, loc:"Mar del Plata (presencial)", sector:"Bienestar / Wellness", src:"https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-asistente-de-marketing-en-mar-del-plata-E55441C17E11821261373E686DCF3405", cv:"cv/main_lila_asistente_marketing.pdf", cover:"cover_letters/cover_lila_asistente_marketing.pdf", flag:""},
+  {slug:"confidencial_analista_marketing", co:"Empresa confidencial (MdP)", role:"Analista de Marketing", fit:66, loc:"Mar del Plata (presencial)", sector:"—", src:"https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-analista-de-marketing-graduados-de-lic-en-marketing-o-carreras-afines-en-mar-del-plata-037381AFF3A55F0061373E686DCF3405", cv:"cv/main_confidencial_analista_marketing.pdf", cover:"cover_letters/cover_confidencial_analista_marketing.pdf", flag:"Piden graduado en Marketing; ella cursa (avanzada)"},
+  {slug:"virtustant_marketer", co:"Virtustant", role:"Marketer", fit:73, loc:"Remoto (LATAM)", sector:"Fintech", src:"https://www.linkedin.com/jobs/view/4452880281/", cv:"cv/main_virtustant_marketer.pdf", cover:"cover_letters/cover_virtustant_marketer.pdf", flag:""},
+  {slug:"monks_analytics_jr", co:"Monks", role:"Junior Analytics Consultant - LATAM", fit:72, loc:"Remoto (LATAM)", sector:"Advertising / Tech", src:"https://www.linkedin.com/jobs/view/4446535201/", cv:"cv/main_monks_analytics_jr.pdf", cover:"cover_letters/cover_monks_analytics_jr.pdf", flag:"Remoto/LATAM — confirmar modalidad"},
+  {slug:"patagonia_email_marketing", co:"Patagonia Digital", role:"Analista de Email Marketing", fit:65, loc:"Híbrido Rosario / #remoto", sector:"Agencia mkt digital", src:"https://www.linkedin.com/jobs/view/4452842580/", cv:"cv/main_patagonia_email_marketing.pdf", cover:"cover_letters/cover_patagonia_email_marketing.pdf", flag:""},
+  {slug:"trafilea_growth_retention", co:"Trafilea", role:"Growth Marketer Retention - Apparel", fit:63, loc:"Remoto (USD)", sector:"E-commerce D2C", src:"https://www.linkedin.com/jobs/view/4454037620/", cv:"cv/main_trafilea_growth_retention.pdf", cover:"cover_letters/cover_trafilea_growth_retention.pdf", flag:""},
+  {slug:"power_email_strategist", co:"Power Digital", role:"Email Strategist", fit:60, loc:"Remoto", sector:"Agencia growth", src:"https://www.linkedin.com/jobs/view/4427800291/", cv:"cv/main_power_email_strategist.pdf", cover:"cover_letters/cover_power_email_strategist.pdf", flag:"Gap 2-5 años + Klaviyo (reach)"},
+  {slug:"righthook_klaviyo_retention", co:"Right Hook Digital", role:"Klaviyo Email Retention Specialist", fit:58, loc:"Remoto", sector:"Agencia DTC", src:"https://www.linkedin.com/jobs/view/4404381990/", cv:"cv/main_righthook_klaviyo_retention.pdf", cover:"cover_letters/cover_righthook_klaviyo_retention.pdf", flag:"⚠️ Pide video de presentación de 2 min · gap Klaviyo hands-on"},
+  {slug:"improvado_mkt_ops", co:"Improvado", role:"Marketing Operations Analyst", fit:45, loc:"Remoto (husos US)", sector:"SaaS / MarTech", src:"https://www.linkedin.com/jobs/view/4431785852/", cv:"cv/main_improvado_mkt_ops.pdf", cover:"cover_letters/cover_improvado_mkt_ops.pdf", flag:"Stretch: gap HubSpot/GA4/GTM"},
+  {slug:"digital_executive_email", co:"Digital Executive", role:"Email Marketing Specialist", fit:44, loc:"Remoto", sector:"Agencia DTC", src:"https://www.linkedin.com/jobs/view/4450240894/", cv:"cv/main_digital_executive_email.pdf", cover:"cover_letters/cover_digital_executive_email.pdf", flag:"Mid-senior + Klaviyo (reach)"},
+  {slug:"felix_crm_manager", co:"Félix", role:"CRM Manager", fit:44, loc:"Híbrido / Remoto-LatAm?", sector:"Fintech remesas", src:"https://www.linkedin.com/jobs/view/4434158534/", cv:"cv/main_felix_crm_manager.pdf", cover:"cover_letters/cover_felix_crm_manager.pdf", flag:"Rol Manager (reach) + confirmar remoto"},
+  {slug:"elevva_performance_jr", co:"Elevva", role:"Analista Jr de Performance", fit:52, loc:"Híbrido CABA", sector:"Consumer goods", src:"https://www.linkedin.com/jobs/view/4446939507/", cv:"cv/main_elevva_performance_jr.pdf", cover:"cover_letters/cover_elevva_performance_jr.pdf", flag:"Híbrido en CABA sin opción remota"},
+  {slug:"fever_senior_crm", co:"Fever", role:"Senior CRM Specialist", fit:50, loc:"Madrid", sector:"Entretenimiento / tech", src:"https://www.linkedin.com/jobs/view/4448415915/", cv:"cv/main_fever_senior_crm.pdf", cover:"cover_letters/cover_fever_senior_crm.pdf", flag:"Sede Madrid + rol senior (reach)"},
+  {slug:"bplay_marketing_digital", co:"bplay", role:"Analista de Marketing Digital", fit:42, loc:"Híbrido CABA", sector:"Juego online", src:"https://www.linkedin.com/jobs/view/4419650053/", cv:"cv/main_bplay_marketing_digital.pdf", cover:"cover_letters/cover_bplay_marketing_digital.pdf", flag:"Híbrido CABA (deal-breaker de ubicación)"},
+  {slug:"loreal_crm_senior_analyst", co:"L'Oréal", role:"CRM Senior Analyst - Digital Acquisition", fit:42, loc:"Presencial Gran BA", sector:"Consumo masivo", src:"https://www.linkedin.com/jobs/view/4449312295/", cv:"cv/main_loreal_crm_senior_analyst.pdf", cover:"cover_letters/cover_loreal_crm_senior_analyst.pdf", flag:"Presencial Gran BA + rol senior (reach)"},
+  {slug:"kirin_klaviyo_lifecycle", co:"Kirin", role:"Klaviyo Lifecycle Marketing Manager", fit:40, loc:"Buenos Aires", sector:"E-commerce DTC", src:"https://www.linkedin.com/jobs/view/4445279756/", cv:"cv/main_kirin_klaviyo_lifecycle.pdf", cover:"cover_letters/cover_kirin_klaviyo_lifecycle.pdf", flag:"Rol Manager + Klaviyo hands-on; BA sin remoto"}
 ];
 
 const esc = s => (s||"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -99,10 +108,12 @@ const KEY = "handoff_bianca_sent";
 const sent = JSON.parse(localStorage.getItem(KEY) || "{}");
 const cls = f => f>=60?"hi":f>=45?"mid":"lo";
 
+const MDP = new Set(["ncm_analista_marketing","lila_asistente_marketing","confidencial_analista_marketing"]);
 const REACH = new Set(["elevva_performance_jr","fever_senior_crm","bplay_marketing_digital","loreal_crm_senior_analyst","kirin_klaviyo_lifecycle"]);
 function card(a){
   const isSent = !!sent[a.slug], c = cls(a.fit);
-  const flag = a.flag ? `<div class="flag">⚠️ ${esc(a.flag)}</div>` : "";
+  const flag = a.flag ? `<div class="flag">${esc(a.flag)}</div>` : "";
+  const applyLabel = a.src.includes("computrabajo") ? "🔗 Aplicar en Computrabajo" : "🔗 Aplicar en LinkedIn";
   const el = document.createElement("article");
   el.className = `card ${c}${isSent?" sent":""}`;
   el.innerHTML = `
@@ -116,7 +127,7 @@ function card(a){
       <a href="${esc(a.src)}" target="_blank" rel="noopener">📄 Ver aviso</a>
       <a href="${esc(a.cv)}" target="_blank" rel="noopener">⬇️ CV</a>
       <a href="${esc(a.cover)}" target="_blank" rel="noopener">⬇️ Carta</a>
-      <a class="apply" href="${esc(a.src)}" target="_blank" rel="noopener">🔗 Aplicar en LinkedIn</a>
+      <a class="apply" href="${esc(a.src)}" target="_blank" rel="noopener">${applyLabel}</a>
     </div>
     <label class="foot"><input type="checkbox" ${isSent?"checked":""} data-slug="${a.slug}"> Enviado</label>`;
   return el;
@@ -124,21 +135,20 @@ function card(a){
 function render(){
   const q = (document.getElementById("q").value||"").toLowerCase();
   const hide = document.body.classList.contains("hideSent");
-  const gRec = document.getElementById("grid-rec"), gReach = document.getElementById("grid-reach");
-  gRec.innerHTML = ""; gReach.innerHTML = "";
+  const g = {mdp:document.getElementById("grid-mdp"), rec:document.getElementById("grid-rec"), reach:document.getElementById("grid-reach")};
+  g.mdp.innerHTML=""; g.rec.innerHTML=""; g.reach.innerHTML="";
   const list = APPS.slice().sort((a,b)=> (!!sent[a.slug]-!!sent[b.slug]) || b.fit-a.fit );
-  let nRec = 0, nReach = 0;
+  const n = {mdp:0, rec:0, reach:0};
   list.forEach(a=>{
     if(q && !(a.co+" "+a.role).toLowerCase().includes(q)) return;
     const isSent = !!sent[a.slug];
     if(hide && isSent) return;
-    if(REACH.has(a.slug)){ gReach.appendChild(card(a)); nReach++; }
-    else { gRec.appendChild(card(a)); nRec++; }
+    const grp = MDP.has(a.slug) ? "mdp" : REACH.has(a.slug) ? "reach" : "rec";
+    g[grp].appendChild(card(a)); n[grp]++;
   });
-  if(!nRec) gRec.innerHTML = '<div class="empty">Sin resultados en este grupo.</div>';
-  if(!nReach) gReach.innerHTML = '<div class="empty">Sin resultados en este grupo.</div>';
-  const n = Object.values(sent).filter(Boolean).length;
-  document.getElementById("counter").textContent = `${n} de ${APPS.length} enviadas`;
+  for(const k in g){ if(!n[k]) g[k].innerHTML = '<div class="empty">Sin resultados en este grupo.</div>'; }
+  const sentN = Object.values(sent).filter(Boolean).length;
+  document.getElementById("counter").textContent = `${sentN} de ${APPS.length} enviadas`;
   document.getElementById("ncount").textContent = APPS.length;
 }
 document.addEventListener("change", e=>{
