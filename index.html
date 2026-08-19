@@ -3,14 +3,14 @@
 <title>Postulaciones listas — Bianca Dondero</title>
 <style>
   :root{
-    --bg:#f4f6fb; --card:#fff; --ink:#1f2733; --muted:#66707e; --line:#e6e9f0;
-    --green:#16a34a; --amber:#d97706; --gray:#64748b; --accent:#2563eb;
+    --bg:#fdeef6; --bg2:#eef0ff; --card:#fffafd; --ink:#4a3b46; --muted:#9a8592; --line:#f4dcea;
+    --green:#3fae7a; --amber:#e0925c; --gray:#c2afbd; --accent:#ec6fa8; --pink:#ff8fc7;
   }
   @media (prefers-color-scheme:dark){
-    :root{--bg:#0f141b;--card:#171e28;--ink:#e7ecf3;--muted:#93a0b1;--line:#252d39;}
+    :root{--bg:#251820;--bg2:#1c1524;--card:#2c1f29;--ink:#f4e8ef;--muted:#c6acbb;--line:#3f2c39;--accent:#ff8fc7;}
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.45}
+  body{margin:0;min-height:100vh;background:linear-gradient(160deg,var(--bg),var(--bg2));color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.45}
   header{padding:28px 20px 14px;max-width:1100px;margin:0 auto}
   h1{margin:0 0 4px;font-size:1.55rem}
   .sub{color:var(--muted);font-size:.95rem}
@@ -42,11 +42,22 @@
   .foot{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:.85rem;color:var(--muted)}
   .foot input{width:17px;height:17px}
   footer{text-align:center;color:var(--muted);font-size:.8rem;padding:0 20px 30px}
+  footer .fh{color:var(--pink)}
+  .dedication{max-width:1100px;margin:12px auto 0;padding:11px 18px;display:flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(90deg,#ffd9ec,#ffe8f5 55%,#efe6ff);color:#c23e7e;border:1px solid #ffc6e0;border-radius:16px;font-weight:650;letter-spacing:.3px;box-shadow:0 6px 18px rgba(236,111,168,.18)}
+  .dedication .heart{font-size:1.35rem;line-height:1;animation:beat 1.5s ease-in-out infinite;filter:drop-shadow(0 1px 2px rgba(194,62,126,.35))}
+  @media (prefers-reduced-motion:reduce){.dedication .heart{animation:none}}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.28)}30%{transform:scale(1)}45%{transform:scale(1.18)}60%{transform:scale(1)}}
+  .card{box-shadow:0 4px 16px rgba(180,120,150,.14);transition:opacity .2s,transform .16s ease,box-shadow .16s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(236,111,168,.22)}
+  .fit.hi{background:linear-gradient(135deg,#4bbd86,#3fae7a)} .fit.mid{background:linear-gradient(135deg,#eaa06a,#e0925c)} .fit.lo{background:linear-gradient(135deg,#cbb8c6,#b9a6b4)}
+  .btns a.apply{background:linear-gradient(135deg,#f47db4,#ec6fa8);border-color:#ec6fa8}
+  .btns a.apply:hover{filter:brightness(1.05)}
 </style>
 
 <header>
-  <h1>📮 Postulaciones listas — Bianca Dondero</h1>
-  <div class="sub"><span id="ncount">10</span> postulaciones listas para enviar · generado 2026-08-18</div>
+  <h1>💌 Postulaciones de Bianca Dondero</h1>
+  <div class="dedication"><span class="heart">💗</span> De Gero para Bianca <span class="heart">💗</span></div>
+  <div class="sub"><span id="ncount">10</span> postulaciones listas para enviar · hechas con cariño 💕</div>
   <div class="howto">
     <b>Cómo usar:</b> por cada oferta, abrí el aviso, bajá tu <b>CV</b> y tu <b>carta</b> (PDF),
     y apretá <b>Aplicar</b> (te lleva a LinkedIn para postular; adjuntá ahí el CV y la carta).
@@ -67,7 +78,7 @@
   <h2 class="grouphead reach">🔴 Reach / ubicación a confirmar <span>piden Buenos Aires presencial o Madrid; solo si aceptan remoto</span></h2>
   <main class="grid" id="grid-reach"></main>
 </div>
-<footer>Generado por Claude Code · ai-job-search · 2026-08-18</footer>
+<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · 2026-08-18</footer>
 
 <script>
 const APPS = [
