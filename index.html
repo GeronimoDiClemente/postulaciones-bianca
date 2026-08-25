@@ -77,10 +77,10 @@
   <main class="grid" id="grid-mdp"></main>
   <h2 class="grouphead rec">🟢 Recomendadas <span>remotas o viables — priorizá estas</span></h2>
   <main class="grid" id="grid-rec"></main>
-  <h2 class="grouphead reach">🔴 Reach / ubicación a confirmar <span>piden Buenos Aires presencial o Madrid; solo si aceptan remoto</span></h2>
+  <h2 class="grouphead reach">🔴 Reach / ubicación o seniority a confirmar <span>piden más años o una ubicación puntual; postulá si igual te interesan</span></h2>
   <main class="grid" id="grid-reach"></main>
 </div>
-<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · 2026-08-18</footer>
+<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-08-25 · 28 postulaciones</footer>
 
 <script>
 const APPS = [
@@ -100,7 +100,18 @@ const APPS = [
   {slug:"fever_senior_crm", co:"Fever", role:"Senior CRM Specialist", fit:50, loc:"Madrid", sector:"Entretenimiento / tech", src:"https://www.linkedin.com/jobs/view/4448415915/", cv:"cv/main_fever_senior_crm.pdf", cover:"cover_letters/cover_fever_senior_crm.pdf", flag:"Sede Madrid + rol senior (reach)"},
   {slug:"bplay_marketing_digital", co:"bplay", role:"Analista de Marketing Digital", fit:42, loc:"Híbrido CABA", sector:"Juego online", src:"https://www.linkedin.com/jobs/view/4419650053/", cv:"cv/main_bplay_marketing_digital.pdf", cover:"cover_letters/cover_bplay_marketing_digital.pdf", flag:"Híbrido CABA (deal-breaker de ubicación)"},
   {slug:"loreal_crm_senior_analyst", co:"L'Oréal", role:"CRM Senior Analyst - Digital Acquisition", fit:42, loc:"Presencial Gran BA", sector:"Consumo masivo", src:"https://www.linkedin.com/jobs/view/4449312295/", cv:"cv/main_loreal_crm_senior_analyst.pdf", cover:"cover_letters/cover_loreal_crm_senior_analyst.pdf", flag:"Presencial Gran BA + rol senior (reach)"},
-  {slug:"kirin_klaviyo_lifecycle", co:"Kirin", role:"Klaviyo Lifecycle Marketing Manager", fit:40, loc:"Buenos Aires", sector:"E-commerce DTC", src:"https://www.linkedin.com/jobs/view/4445279756/", cv:"cv/main_kirin_klaviyo_lifecycle.pdf", cover:"cover_letters/cover_kirin_klaviyo_lifecycle.pdf", flag:"Rol Manager + Klaviyo hands-on; BA sin remoto"}
+  {slug:"kirin_klaviyo_lifecycle", co:"Kirin", role:"Klaviyo Lifecycle Marketing Manager", fit:40, loc:"Buenos Aires", sector:"E-commerce DTC", src:"https://www.linkedin.com/jobs/view/4445279756/", cv:"cv/main_kirin_klaviyo_lifecycle.pdf", cover:"cover_letters/cover_kirin_klaviyo_lifecycle.pdf", flag:"Rol Manager + Klaviyo hands-on; BA sin remoto"},
+  {slug:"confidencial_community_manager", co:"Empresa confidencial (MdP)", role:"Community Manager (perfil experto)", fit:82, loc:"Mar del Plata (presencial)", sector:"Corporativa local", src:"https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-community-manager-con-perfil-experto-modalidad-presencial-en-mar-del-plata-3798dd1f50d38db561373e686dcf3405", cv:"cv/main_confidencial_community_manager.pdf", cover:"cover_letters/cover_confidencial_community_manager.pdf", flag:"Tu experiencia CM fue estacional; el resto encaja fuerte"},
+  {slug:"betterswag_growth", co:"Better Swag", role:"Growth Marketer (Social & Email)", fit:78, loc:"Remoto (USD)", sector:"E-commerce / Swag", src:"https://www.getonbrd.com/jobs/digital-marketing/growth-marketer-social-email-better-swag-remote", cv:"cv/main_betterswag_growth.pdf", cover:"cover_letters/cover_betterswag_growth.pdf", flag:"En inglés; figura Semi-Senior pero foco y salario junior"},
+  {slug:"zerviz_asistente_marketing", co:"ZerviZ", role:"Asistente de Marketing", fit:72, loc:"Remoto (LATAM)", sector:"Tech / Servicios", src:"https://www.getonbrd.com/jobs/digital-marketing/analista-de-marketing-zerviz-remote", cv:"cv/main_zerviz_asistente_marketing.pdf", cover:"cover_letters/cover_zerviz_asistente_marketing.pdf", flag:"El aviso pide residencia en Chile — confirmá si toman remoto desde Argentina"},
+  {slug:"vintti_community_manager", co:"Vintti", role:"Community Manager & Content Creator", fit:68, loc:"Remoto (LATAM) · part-time OK", sector:"Reclutadora (cliente US)", src:"https://www.linkedin.com/jobs/view/4457605066/", cv:"cv/main_vintti_community_manager.pdf", cover:"cover_letters/cover_vintti_community_manager.pdf", flag:"En inglés; piden editar video crudo a Reels (gap) — admite part-time"},
+  {slug:"interfell_crm_executive", co:"Interfell", role:"CRM Executive (Emarsys)", fit:62, loc:"Remoto (LATAM · USD)", sector:"Staffing / CRM", src:"https://www.getonbrd.com/jobs/digital-marketing/emarsys-crm-executive-interfell-remote", cv:"cv/main_interfell_crm_executive.pdf", cover:"cover_letters/cover_interfell_crm_executive.pdf", flag:"Piden Emarsys hands-on (obligatorio) — gap declarado"},
+  {slug:"betterfly_mkt_ops", co:"Betterfly", role:"Marketing Operations Specialist", fit:55, loc:"Remoto (LATAM)", sector:"Insurtech / Bienestar", src:"https://www.getonbrd.com/jobs/marketing-digital/marketing-operations-specialist-betterfly-remote", cv:"cv/main_betterfly_mkt_ops.pdf", cover:"cover_letters/cover_betterfly_mkt_ops.pdf", flag:"Piden HubSpot nivel administrador — base transferible, gap declarado"},
+  {slug:"optaris_b2b_growth", co:"Optaris", role:"B2B Growth Marketing Specialist", fit:52, loc:"Remoto (LATAM · USA)", sector:"B2B SaaS", src:"https://www.linkedin.com/jobs/view/4456933002/", cv:"cv/main_optaris_b2b_growth.pdf", cover:"cover_letters/cover_optaris_b2b_growth.pdf", flag:"Gap HubSpot/Clay/RevOps + 2-4 años B2B (reach)"},
+  {slug:"pedidosya_engagement", co:"PedidosYa", role:"Customer Engagement Sr Analyst", fit:48, loc:"Gran Buenos Aires", sector:"Delivery / Tech", src:"https://www.linkedin.com/jobs/view/4444392403/", cv:"cv/main_pedidosya_engagement.pdf", cover:"cover_letters/cover_pedidosya_engagement.pdf", flag:"Rol Sr + ubicación GBA (confirmá remoto/híbrido); gap Braze"},
+  {slug:"crucialpoint_email", co:"CrucialPoint", role:"Email Marketing Manager", fit:38, loc:"Remoto", sector:"Agencia / DTC", src:"https://www.linkedin.com/jobs/view/4450135673/", cv:"cv/main_crucialpoint_email.pdf", cover:"cover_letters/cover_crucialpoint_email.pdf", flag:"⚠️ Piden completar un form aparte para postular · Manager + Klaviyo 3+ años"},
+  {slug:"interfell_ecommerce", co:"Interfell", role:"E-commerce Manager", fit:32, loc:"Remoto (USD)", sector:"Staffing / E-commerce", src:"https://www.getonbrd.com/jobs/operations-management/ecommerce-manager-interfell-remote", cv:"cv/main_interfell_ecommerce.pdf", cover:"cover_letters/cover_interfell_ecommerce.pdf", flag:"Rol Senior 5+ años (reach); Shopify/Klaviyo/Amazon avanzados"},
+  {slug:"talentglobal_email", co:"Talent Global", role:"Email Marketing Specialist", fit:27, loc:"Remoto", sector:"Venture studio / Wellness", src:"https://www.linkedin.com/jobs/view/4454793020/", cv:"cv/main_talentglobal_email.pdf", cover:"cover_letters/cover_talentglobal_email.pdf", flag:"Stretch: piden 5+ años + Klaviyo/Figma + liderar equipo"}
 ];
 
 const esc = s => (s||"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -108,12 +119,12 @@ const KEY = "handoff_bianca_sent";
 const sent = JSON.parse(localStorage.getItem(KEY) || "{}");
 const cls = f => f>=60?"hi":f>=45?"mid":"lo";
 
-const MDP = new Set(["ncm_analista_marketing","lila_asistente_marketing","confidencial_analista_marketing"]);
-const REACH = new Set(["elevva_performance_jr","fever_senior_crm","bplay_marketing_digital","loreal_crm_senior_analyst","kirin_klaviyo_lifecycle"]);
+const MDP = new Set(["ncm_analista_marketing","lila_asistente_marketing","confidencial_analista_marketing","confidencial_community_manager"]);
+const REACH = new Set(["elevva_performance_jr","fever_senior_crm","bplay_marketing_digital","loreal_crm_senior_analyst","kirin_klaviyo_lifecycle","talentglobal_email","interfell_ecommerce","crucialpoint_email","pedidosya_engagement"]);
 function card(a){
   const isSent = !!sent[a.slug], c = cls(a.fit);
   const flag = a.flag ? `<div class="flag">${esc(a.flag)}</div>` : "";
-  const applyLabel = a.src.includes("computrabajo") ? "🔗 Aplicar en Computrabajo" : "🔗 Aplicar en LinkedIn";
+  const applyLabel = a.src.includes("computrabajo") ? "🔗 Aplicar en Computrabajo" : a.src.includes("getonbrd") ? "🔗 Aplicar en Get on Board" : "🔗 Aplicar en LinkedIn";
   const el = document.createElement("article");
   el.className = `card ${c}${isSent?" sent":""}`;
   el.innerHTML = `
