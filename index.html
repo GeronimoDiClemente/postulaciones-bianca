@@ -57,19 +57,19 @@
 <header>
   <h1>💌 Postulaciones de Bianca Dondero</h1>
   <div class="dedication"><span class="heart">💗</span> De Gero para Bianca <span class="heart">💗</span></div>
-  <div class="sub"><span id="ncount">17</span> postulaciones listas para enviar · hechas con cariño 💕</div>
+  <div class="sub"><span id="ncount">11</span> postulaciones nuevas listas para enviar · 9 de septiembre · hechas con cariño 💕</div>
   <div class="howto">
     <b>Cómo usar:</b> por cada oferta, abrí el aviso, bajá tu <b>CV</b> y tu <b>carta</b> (PDF),
     y apretá <b>Aplicar</b> (te lleva al portal para postular; adjuntá ahí el CV y la carta).
     Tildá <b>Enviado</b> a medida que postulás — se guarda en este navegador.
-    <br>🏙️ <b>En Mar del Plata</b> = presenciales en tu ciudad · 🟢 remotas/viables · 🔴 revisá la ubicación (piden Buenos Aires o Madrid).
+    <br>🏙️ <b>En Mar del Plata</b> = presenciales en tu ciudad · 🟢 remotas/viables · 🔴 revisá la ubicación (piden Buenos Aires — la carta ya pregunta si admiten remoto).
   </div>
 </header>
 
 <div class="bar">
   <input id="q" placeholder="Filtrar por empresa o rol…">
   <button id="hideSent">Ocultar enviadas</button>
-  <span class="counter" id="counter">0 de 17 enviadas</span>
+  <span class="counter" id="counter">0 de 11 enviadas</span>
 </div>
 
 <div class="wrap">
@@ -80,21 +80,21 @@
   <h2 class="grouphead reach">🔴 Reach / ubicación o seniority a confirmar <span>piden más años o una ubicación puntual; postulá si igual te interesan</span></h2>
   <main class="grid" id="grid-reach"></main>
 </div>
-<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-08-25 · 11 postulaciones nuevas</footer>
+<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-09-09 · 11 postulaciones nuevas</footer>
 
 <script>
 const APPS = [
-  {slug:"confidencial_community_manager", co:"Empresa confidencial (MdP)", role:"Community Manager (perfil experto)", fit:82, loc:"Mar del Plata (presencial)", sector:"Corporativa local", src:"https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-community-manager-con-perfil-experto-modalidad-presencial-en-mar-del-plata-3798dd1f50d38db561373e686dcf3405", cv:"cv/main_confidencial_community_manager.pdf", cover:"cover_letters/cover_confidencial_community_manager.pdf", flag:"Tu experiencia CM fue estacional; el resto encaja fuerte"},
-  {slug:"betterswag_growth", co:"Better Swag", role:"Growth Marketer (Social & Email)", fit:78, loc:"Remoto (USD)", sector:"E-commerce / Swag", src:"https://www.getonbrd.com/jobs/digital-marketing/growth-marketer-social-email-better-swag-remote", cv:"cv/main_betterswag_growth.pdf", cover:"cover_letters/cover_betterswag_growth.pdf", flag:"En inglés; figura Semi-Senior pero foco y salario junior"},
-  {slug:"zerviz_asistente_marketing", co:"ZerviZ", role:"Asistente de Marketing", fit:72, loc:"Remoto (LATAM)", sector:"Tech / Servicios", src:"https://www.getonbrd.com/jobs/digital-marketing/analista-de-marketing-zerviz-remote", cv:"cv/main_zerviz_asistente_marketing.pdf", cover:"cover_letters/cover_zerviz_asistente_marketing.pdf", flag:"El aviso pide residencia en Chile — confirmá si toman remoto desde Argentina"},
-  {slug:"vintti_community_manager", co:"Vintti", role:"Community Manager & Content Creator", fit:68, loc:"Remoto (LATAM) · part-time OK", sector:"Reclutadora (cliente US)", src:"https://www.linkedin.com/jobs/view/4457605066/", cv:"cv/main_vintti_community_manager.pdf", cover:"cover_letters/cover_vintti_community_manager.pdf", flag:"En inglés; piden editar video crudo a Reels (gap) — admite part-time"},
-  {slug:"interfell_crm_executive", co:"Interfell", role:"CRM Executive (Emarsys)", fit:62, loc:"Remoto (LATAM · USD)", sector:"Staffing / CRM", src:"https://www.getonbrd.com/jobs/digital-marketing/emarsys-crm-executive-interfell-remote", cv:"cv/main_interfell_crm_executive.pdf", cover:"cover_letters/cover_interfell_crm_executive.pdf", flag:"Piden Emarsys hands-on (obligatorio) — gap declarado"},
-  {slug:"betterfly_mkt_ops", co:"Betterfly", role:"Marketing Operations Specialist", fit:55, loc:"Remoto (LATAM)", sector:"Insurtech / Bienestar", src:"https://www.getonbrd.com/jobs/marketing-digital/marketing-operations-specialist-betterfly-remote", cv:"cv/main_betterfly_mkt_ops.pdf", cover:"cover_letters/cover_betterfly_mkt_ops.pdf", flag:"Piden HubSpot nivel administrador — base transferible, gap declarado"},
-  {slug:"optaris_b2b_growth", co:"Optaris", role:"B2B Growth Marketing Specialist", fit:52, loc:"Remoto (LATAM · USA)", sector:"B2B SaaS", src:"https://www.linkedin.com/jobs/view/4456933002/", cv:"cv/main_optaris_b2b_growth.pdf", cover:"cover_letters/cover_optaris_b2b_growth.pdf", flag:"Gap HubSpot/Clay/RevOps + 2-4 años B2B (reach)"},
-  {slug:"pedidosya_engagement", co:"PedidosYa", role:"Customer Engagement Sr Analyst", fit:48, loc:"Gran Buenos Aires", sector:"Delivery / Tech", src:"https://www.linkedin.com/jobs/view/4444392403/", cv:"cv/main_pedidosya_engagement.pdf", cover:"cover_letters/cover_pedidosya_engagement.pdf", flag:"Rol Sr + ubicación GBA (confirmá remoto/híbrido); gap Braze"},
-  {slug:"crucialpoint_email", co:"CrucialPoint", role:"Email Marketing Manager", fit:38, loc:"Remoto", sector:"Agencia / DTC", src:"https://www.linkedin.com/jobs/view/4450135673/", cv:"cv/main_crucialpoint_email.pdf", cover:"cover_letters/cover_crucialpoint_email.pdf", flag:"⚠️ Piden completar un form aparte para postular · Manager + Klaviyo 3+ años"},
-  {slug:"interfell_ecommerce", co:"Interfell", role:"E-commerce Manager", fit:32, loc:"Remoto (USD)", sector:"Staffing / E-commerce", src:"https://www.getonbrd.com/jobs/operations-management/ecommerce-manager-interfell-remote", cv:"cv/main_interfell_ecommerce.pdf", cover:"cover_letters/cover_interfell_ecommerce.pdf", flag:"Rol Senior 5+ años (reach); Shopify/Klaviyo/Amazon avanzados"},
-  {slug:"talentglobal_email", co:"Talent Global", role:"Email Marketing Specialist", fit:27, loc:"Remoto", sector:"Venture studio / Wellness", src:"https://www.linkedin.com/jobs/view/4454793020/", cv:"cv/main_talentglobal_email.pdf", cover:"cover_letters/cover_talentglobal_email.pdf", flag:"Stretch: piden 5+ años + Klaviyo/Figma + liderar equipo"}
+  {slug:"brightvessel_digital_mkt", co:"Bright Vessel", role:"Digital Marketing Specialist", fit:74, loc:"Remoto (full-time)", sector:"Agencia digital (Florida, EE.UU.)", src:"https://www.linkedin.com/jobs/view/4464642046/", cv:"cv/main_brightvessel_digital_mkt.pdf", cover:"cover_letters/cover_brightvessel_digital_mkt.pdf", flag:"Entry level y en ingl\u00e9s; no piden GA4 ni pauta paga previa, tu Google Data Analytics cubre la parte de m\u00e9tricas"},
+  {slug:"confidential_mkt_sales_support", co:"Empresa confidencial (reclutamiento)", role:"Marketing & Sales Support Coordinator", fit:72, loc:"Remoto (horario EE.UU.)", sector:"Staffing / Recruiting", src:"https://www.linkedin.com/jobs/view/4456133527/", cv:"cv/main_confidential_mkt_sales_support.pdf", cover:"cover_letters/cover_confidential_mkt_sales_support.pdf", flag:"\u26a0\ufe0f Piden adjuntar una pieza escrita tuya (un posteo, newsletter o mail) \u00b7 mitad contenido, mitad seguimiento de leads"},
+  {slug:"colombo_hurd_automation", co:"Colombo & Hurd", role:"Marketing Specialist \u2014 Automation & Funnels", fit:70, loc:"Remoto (USD 1.500/mes)", sector:"Estudio jur\u00eddico de inmigraci\u00f3n (EE.UU.)", src:"https://www.linkedin.com/jobs/view/4463392989/", cv:"cv/main_colombo_hurd_automation.pdf", cover:"cover_letters/cover_colombo_hurd_automation.pdf", flag:"La m\u00e1s alineada a tu foco CRM/lifecycle \u00b7 gap: Salesforce y Zapier hands-on"},
+  {slug:"gro_mkt_assistant", co:"Gro.Inc", role:"Executive & Marketing Assistant", fit:68, loc:"Remoto \u00b7 part-time ~30 h (horario EE.UU.)", sector:"Consultora de marketing (Florida)", src:"https://www.getonbrd.com/jobs/marketing-digital/executive-marketing-assistant-gro-inc-remote", cv:"cv/main_gro_mkt_assistant.pdf", cover:"cover_letters/cover_gro_mkt_assistant.pdf", flag:"Part-time compatible con la cursada \u00b7 piden 3-5 a\u00f1os y herramientas nuevas (Submagic, Basecamp)"},
+  {slug:"promarketing_cm", co:"Promarketing", role:"Community Manager", fit:62, loc:"Remoto (sin restricci\u00f3n de pa\u00eds)", sector:"Agencia de marketing", src:"https://www.getonbrd.com/jobs/digital-marketing/community-manager-promarketing-remote-55d8", cv:"cv/main_promarketing_cm.pdf", cover:"cover_letters/cover_promarketing_cm.pdf", flag:"Tu experiencia m\u00e1s fuerte, pero piden 3+ a\u00f1os continuos y la tuya fue estacional"},
+  {slug:"simera_influencer", co:"Simera", role:"Influencer Marketing Specialist", fit:42, loc:"Remoto (USD 2.000-2.200/mes)", sector:"Staffing LatAm (cliente EE.UU.)", src:"https://www.linkedin.com/jobs/view/4459529607/", cv:"cv/main_simera_influencer.pdf", cover:"cover_letters/cover_simera_influencer.pdf", flag:"Stretch: piden 2+ a\u00f1os espec\u00edficos en influencer marketing \u00b7 muy buen sueldo si entra"},
+  {slug:"dept_paid_social", co:"DEPT\u00ae", role:"Associate, Paid Social", fit:58, loc:"Mar del Plata \u00b7 h\u00edbrido 1 d\u00eda/semana", sector:"Agencia global de growth", src:"https://www.linkedin.com/jobs/view/4464907362/", cv:"cv/main_dept_paid_social.pdf", cover:"cover_letters/cover_dept_paid_social.pdf", flag:"DEPT tiene oficina en Mar del Plata \u00b7 gap: no manejaste Meta Ads Manager profesionalmente"},
+  {slug:"uala_own_media", co:"Ual\u00e1", role:"Analista de Own Media", fit:62, loc:"Buenos Aires (confirmar remoto)", sector:"Fintech / Neobanco", src:"https://www.linkedin.com/jobs/view/4450335827/", cv:"cv/main_uala_own_media.pdf", cover:"cover_letters/cover_uala_own_media.pdf", flag:"Ven\u00eds de banca digital (BBVA), encaja fuerte \u00b7 figura en Buenos Aires: la carta pregunta si admiten remoto"},
+  {slug:"assurant_email_mkt", co:"Assurant", role:"Email Marketing Specialist", fit:52, loc:"Buenos Aires (confirmar remoto)", sector:"Seguros / Servicios", src:"https://www.linkedin.com/jobs/view/4459563633/", cv:"cv/main_assurant_email_mkt.pdf", cover:"cover_letters/cover_assurant_email_mkt.pdf", flag:"Lifecycle puro (onboarding, retenci\u00f3n, reactivaci\u00f3n) \u00b7 piden Salesforce Marketing Cloud y 3+ a\u00f1os"},
+  {slug:"msf_performance", co:"M\u00e9dicos Sin Fronteras LAT", role:"Analista de Performance (Marketing Digital)", fit:42, loc:"H\u00edbrido Buenos Aires (confirmar)", sector:"ONG humanitaria", src:"https://www.linkedin.com/jobs/view/4463131033/", cv:"cv/main_msf_performance.pdf", cover:"cover_letters/cover_msf_performance.pdf", flag:"\u23f0 Cierra el 24/09 \u00b7 piden 2 a\u00f1os de pauta paga (Meta/Google Ads) y piden aspiraciones salariales"},
+  {slug:"xometry_crm_salesops", co:"Xometry", role:"CRM & Sales Operations Specialist", fit:38, loc:"Gran Buenos Aires (confirmar remoto)", sector:"Marketplace industrial (NASDAQ)", src:"https://www.linkedin.com/jobs/view/4463507225/", cv:"cv/main_xometry_crm_salesops.pdf", cover:"cover_letters/cover_xometry_crm_salesops.pdf", flag:"Piden Salesforce experto + ZoomInfo/Sales Navigator \u00b7 postul\u00e1 solo si confirman remoto"}
 ];
 
 const esc = s => (s||"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -102,8 +102,8 @@ const KEY = "handoff_bianca_sent";
 const sent = JSON.parse(localStorage.getItem(KEY) || "{}");
 const cls = f => f>=60?"hi":f>=45?"mid":"lo";
 
-const MDP = new Set(["confidencial_community_manager"]);
-const REACH = new Set(["talentglobal_email","interfell_ecommerce","crucialpoint_email","pedidosya_engagement"]);
+const MDP = new Set(["dept_paid_social"]);
+const REACH = new Set(["uala_own_media","assurant_email_mkt","msf_performance","xometry_crm_salesops"]);
 function card(a){
   const isSent = !!sent[a.slug], c = cls(a.fit);
   const flag = a.flag ? `<div class="flag">${esc(a.flag)}</div>` : "";
@@ -113,7 +113,7 @@ function card(a){
   el.innerHTML = `
     <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
       <div><p class="role">${esc(a.role)}</p><div class="co">${esc(a.co)}</div></div>
-      <span class="fit ${c}">${a.fit}</span>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px"><span class="fit ${c}">${a.fit}</span></div>
     </div>
     <div class="meta"><span class="tag">${esc(a.loc)}</span><span class="tag">${esc(a.sector)}</span></div>
     ${flag}
