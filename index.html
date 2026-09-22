@@ -57,7 +57,7 @@
 <header>
   <h1>💌 Postulaciones de Bianca Dondero</h1>
   <div class="dedication"><span class="heart">💗</span> De Gero para Bianca <span class="heart">💗</span></div>
-  <div class="sub"><span id="ncount">12</span> postulaciones nuevas listas para enviar · actualizado 13 de septiembre · hechas con cariño 💕</div>
+  <div class="sub"><span id="ncount">13</span> postulaciones nuevas listas para enviar · actualizado 21 de septiembre · hechas con cariño 💕</div>
   <div class="howto">
     <b>Cómo usar:</b> por cada oferta, abrí el aviso, bajá tu <b>CV</b> y tu <b>carta</b> (PDF),
     y apretá <b>Aplicar</b> (te lleva al portal para postular; adjuntá ahí el CV y la carta).
@@ -69,7 +69,7 @@
 <div class="bar">
   <input id="q" placeholder="Filtrar por empresa o rol…">
   <button id="hideSent">Ocultar enviadas</button>
-  <span class="counter" id="counter">0 de 12 enviadas</span>
+  <span class="counter" id="counter">0 de 13 enviadas</span>
 </div>
 
 <div class="wrap">
@@ -80,7 +80,7 @@
   <h2 class="grouphead reach">🔴 Reach / ubicación o seniority a confirmar <span>piden más años o una ubicación puntual; postulá si igual te interesan</span></h2>
   <main class="grid" id="grid-reach"></main>
 </div>
-<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-09-13 · 12 postulaciones nuevas</footer>
+<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-09-21 · 13 postulaciones nuevas</footer>
 
 <script>
 const APPS = [
@@ -95,7 +95,8 @@ const APPS = [
   {slug:"assurant_email_mkt", co:"Assurant", role:"Email Marketing Specialist", fit:52, loc:"Buenos Aires (confirmar remoto)", sector:"Seguros / Servicios", src:"https://www.linkedin.com/jobs/view/4459563633/", cv:"cv/main_assurant_email_mkt.pdf", cover:"cover_letters/cover_assurant_email_mkt.pdf", flag:"Lifecycle puro (onboarding, retenci\u00f3n, reactivaci\u00f3n) \u00b7 piden Salesforce Marketing Cloud y 3+ a\u00f1os"},
   {slug:"msf_performance", co:"M\u00e9dicos Sin Fronteras LAT", role:"Analista de Performance (Marketing Digital)", fit:42, loc:"H\u00edbrido Buenos Aires (confirmar)", sector:"ONG humanitaria", src:"https://www.linkedin.com/jobs/view/4463131033/", cv:"cv/main_msf_performance.pdf", cover:"cover_letters/cover_msf_performance.pdf", flag:"\u23f0 Cierra el 24/09 \u00b7 piden 2 a\u00f1os de pauta paga (Meta/Google Ads) y piden aspiraciones salariales"},
   {slug:"xometry_crm_salesops", co:"Xometry", role:"CRM & Sales Operations Specialist", fit:38, loc:"Gran Buenos Aires (confirmar remoto)", sector:"Marketplace industrial (NASDAQ)", src:"https://www.linkedin.com/jobs/view/4463507225/", cv:"cv/main_xometry_crm_salesops.pdf", cover:"cover_letters/cover_xometry_crm_salesops.pdf", flag:"Piden Salesforce experto + ZoomInfo/Sales Navigator \u00b7 postul\u00e1 solo si confirman remoto"},
-  {slug:"tgtc_lifecycle_retention", co:"TGTC (The Global Talent Co)", role:"Lifecycle & Retention Marketing Manager", fit:55, loc:"Remoto (full-time)", sector:"Staffing \u00b7 cliente DTC salud y bienestar (no revelado)", src:"https://www.linkedin.com/jobs/view/4466479596/", cv:"cv/main_tgtc_lifecycle_retention.pdf", cover:"cover_letters/cover_tgtc_lifecycle_retention.pdf", flag:"Piden Shopify hands-on (excluyente) y Klaviyo que todav\u00eda no ten\u00e9s \u00b7 el resto (CRM/retenci\u00f3n/lifecycle) encaja bien"}
+  {slug:"tgtc_lifecycle_retention", co:"TGTC (The Global Talent Co)", role:"Lifecycle & Retention Marketing Manager", fit:55, loc:"Remoto (full-time)", sector:"Staffing \u00b7 cliente DTC salud y bienestar (no revelado)", src:"https://www.linkedin.com/jobs/view/4466479596/", cv:"cv/main_tgtc_lifecycle_retention.pdf", cover:"cover_letters/cover_tgtc_lifecycle_retention.pdf", flag:"Piden Shopify hands-on (excluyente) y Klaviyo que todav\u00eda no ten\u00e9s \u00b7 el resto (CRM/retenci\u00f3n/lifecycle) encaja bien"},
+  {slug:"glofy_marketing_coordinator", co:"Glofy", role:"Multi Channel Marketing Coordinator (Direct Mail)", fit:70, loc:"Remoto (Argentina)", sector:"Staffing nearshore (oficina Rosario) \u00b7 cliente de marketing en EE.UU.", src:"https://www.getonbrd.com/jobs/digital-marketing/marketing-operations-coordinator-direct-mail-glofy-remote", cv:"cv/main_glofy_marketing_coordinator.pdf", cover:"cover_letters/cover_glofy_marketing_coordinator.pdf", flag:"Buen fit CRM/datos bancarios \u00b7 gap: <1 a\u00f1o en CRM Ops formal, SQL en formaci\u00f3n, sin COMS/Workfront/Asana/Jira"}
 ];
 
 const esc = s => (s||"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
