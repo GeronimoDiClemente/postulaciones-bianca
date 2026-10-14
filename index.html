@@ -176,10 +176,20 @@ document.addEventListener("change", e=>{
   }
 });
 document.getElementById("q").addEventListener("input", render);
+// Las enviadas se ocultan por defecto para que la pagina no quede cargada.
+// La eleccion se recuerda entre visitas.
+const HKEY = "handoff_bianca_hidesent";
+function applyHideSent(on){
+  document.body.classList.toggle("hideSent", on);
+  document.getElementById("hideSent").textContent = on ? "Mostrar todas" : "Ocultar enviadas";
+  try { localStorage.setItem(HKEY, on ? "1" : "0"); } catch(e) {}
+}
 document.getElementById("hideSent").addEventListener("click", ()=>{
-  document.body.classList.toggle("hideSent");
-  document.getElementById("hideSent").textContent = document.body.classList.contains("hideSent")?"Mostrar todas":"Ocultar enviadas";
+  applyHideSent(!document.body.classList.contains("hideSent"));
   render();
 });
+let hidePref = true;
+try { hidePref = localStorage.getItem(HKEY) !== "0"; } catch(e) {}
+applyHideSent(hidePref);
 render();
 </script>
