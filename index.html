@@ -29,6 +29,17 @@
   .card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gray);border-radius:14px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;transition:opacity .2s}
   .card.hi{border-left-color:var(--green)} .card.mid{border-left-color:var(--amber)} .card.lo{border-left-color:var(--gray)}
   .card.sent{opacity:.45}
+  /* Cajon de las ya postuladas: cerrado por defecto, para que no carguen la pagina. */
+  #sentBox{margin:30px 0 8px;border-top:1px dashed var(--line);padding-top:14px}
+  #sentBox>summary{cursor:pointer;list-style:none;font-size:1.08rem;font-weight:700;color:var(--muted);
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;padding:6px 0}
+  #sentBox>summary::-webkit-details-marker{display:none}
+  #sentBox>summary::before{content:"▸";display:inline-block;transition:transform .15s;font-size:.9em}
+  #sentBox[open]>summary::before{transform:rotate(90deg)}
+  #sentBox>summary:hover{color:var(--ink)}
+  #sentBox>summary .sub{font-weight:400;font-size:.85rem;color:var(--muted)}
+  /* Abiertas se leen enteras: adentro del cajon no hace falta atenuarlas. */
+  #sentBox .card.sent{opacity:.8}
   .role{font-weight:650;font-size:1.05rem;margin:0}
   .co{color:var(--muted);font-size:.9rem}
   .meta{display:flex;flex-wrap:wrap;gap:6px;font-size:.78rem}
@@ -61,14 +72,13 @@
   <div class="howto">
     <b>Cómo usar:</b> por cada oferta, abrí el aviso, bajá tu <b>CV</b> y tu <b>carta</b> (PDF),
     y apretá <b>Aplicar</b> (te lleva al portal para postular; adjuntá ahí el CV y la carta).
-    Tildá <b>Enviado</b> a medida que postulás — se guarda en este navegador.
+    Tildá <b>Enviado</b> a medida que postulás: la tarjeta sale de la lista y se guarda en <b>✅ Ya postuladas</b>, el cajón del final. No se borra nada, se recupera con un clic. (Los tildes se guardan en este navegador.)
     <br>🏙️ <b>En Mar del Plata</b> = presenciales en tu ciudad · 🟢 remotas/viables · 🔴 revisá la ubicación (piden Buenos Aires — la carta ya pregunta si admiten remoto).
   </div>
 </header>
 
 <div class="bar">
   <input id="q" placeholder="Filtrar por empresa o rol…">
-  <button id="hideSent">Ocultar enviadas</button>
   <span class="counter" id="counter">0 de 13 enviadas</span>
 </div>
 
@@ -79,6 +89,11 @@
   <main class="grid" id="grid-rec"></main>
   <h2 class="grouphead reach">🔴 Reach / ubicación o seniority a confirmar <span>piden más años o una ubicación puntual; postulá si igual te interesan</span></h2>
   <main class="grid" id="grid-reach"></main>
+
+  <details id="sentBox">
+    <summary><span id="sentHead">✅ Ya postuladas</span> <span class="sub">guardadas acá para no perderlas — clic para abrir</span></summary>
+    <main class="grid" id="grid-sent"></main>
+  </details>
 </div>
 <footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-10-13 · 34 postulaciones nuevas</footer>
 
@@ -151,21 +166,23 @@ function card(a){
 }
 function render(){
   const q = (document.getElementById("q").value||"").toLowerCase();
-  const hide = document.body.classList.contains("hideSent");
-  const g = {mdp:document.getElementById("grid-mdp"), rec:document.getElementById("grid-rec"), reach:document.getElementById("grid-reach")};
-  g.mdp.innerHTML=""; g.rec.innerHTML=""; g.reach.innerHTML="";
-  const list = APPS.slice().sort((a,b)=> (!!sent[a.slug]-!!sent[b.slug]) || b.fit-a.fit );
-  const n = {mdp:0, rec:0, reach:0};
+  const g = {mdp:document.getElementById("grid-mdp"), rec:document.getElementById("grid-rec"),
+             reach:document.getElementById("grid-reach"), sent:document.getElementById("grid-sent")};
+  for(const k in g) g[k].innerHTML = "";
+  const list = APPS.slice().sort((a,b)=> b.fit-a.fit );
+  const n = {mdp:0, rec:0, reach:0, sent:0};
   list.forEach(a=>{
     if(q && !(a.co+" "+a.role).toLowerCase().includes(q)) return;
-    const isSent = !!sent[a.slug];
-    if(hide && isSent) return;
-    const grp = MDP.has(a.slug) ? "mdp" : REACH.has(a.slug) ? "reach" : "rec";
+    // Las ya enviadas salen de los grupos activos y se guardan en el cajon de abajo.
+    const grp = sent[a.slug] ? "sent" : MDP.has(a.slug) ? "mdp" : REACH.has(a.slug) ? "reach" : "rec";
     g[grp].appendChild(card(a)); n[grp]++;
   });
   for(const k in g){ if(!n[k]) g[k].innerHTML = '<div class="empty">Sin resultados en este grupo.</div>'; }
   const sentN = Object.values(sent).filter(Boolean).length;
-  document.getElementById("counter").textContent = `${sentN} de ${APPS.length} enviadas`;
+  const pend = APPS.length - sentN;
+  document.getElementById("counter").textContent = `${sentN} de ${APPS.length} enviadas · ${pend} pendientes`;
+  document.getElementById("sentHead").textContent = `✅ Ya postuladas (${n.sent})`;
+  document.getElementById("sentBox").style.display = sentN ? "" : "none";
   document.getElementById("ncount").textContent = APPS.length;
 }
 document.addEventListener("change", e=>{
@@ -176,20 +193,5 @@ document.addEventListener("change", e=>{
   }
 });
 document.getElementById("q").addEventListener("input", render);
-// Las enviadas se ocultan por defecto para que la pagina no quede cargada.
-// La eleccion se recuerda entre visitas.
-const HKEY = "handoff_bianca_hidesent";
-function applyHideSent(on){
-  document.body.classList.toggle("hideSent", on);
-  document.getElementById("hideSent").textContent = on ? "Mostrar todas" : "Ocultar enviadas";
-  try { localStorage.setItem(HKEY, on ? "1" : "0"); } catch(e) {}
-}
-document.getElementById("hideSent").addEventListener("click", ()=>{
-  applyHideSent(!document.body.classList.contains("hideSent"));
-  render();
-});
-let hidePref = true;
-try { hidePref = localStorage.getItem(HKEY) !== "0"; } catch(e) {}
-applyHideSent(hidePref);
 render();
 </script>
