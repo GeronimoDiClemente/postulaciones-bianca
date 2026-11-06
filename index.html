@@ -68,7 +68,7 @@
 <header>
   <h1>💌 Postulaciones de Bianca Dondero</h1>
   <div class="dedication"><span class="heart">💗</span> De Gero para Bianca <span class="heart">💗</span></div>
-  <div class="sub"><span id="ncount">13</span> postulaciones nuevas listas para enviar · actualizado 4 de noviembre · hechas con cariño 💕</div>
+  <div class="sub"><span id="ncount">13</span> postulaciones nuevas listas para enviar · actualizado 6 de noviembre · hechas con cariño 💕</div>
   <div class="howto">
     <b>Cómo usar:</b> por cada oferta, abrí el aviso, bajá tu <b>CV</b> y tu <b>carta</b> (PDF),
     y apretá <b>Aplicar</b> (te lleva al portal para postular; adjuntá ahí el CV y la carta).
@@ -95,7 +95,7 @@
     <main class="grid" id="grid-sent"></main>
   </details>
 </div>
-<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-11-04 · 42 postulaciones</footer>
+<footer>Hecho por Gero para Bianca <span class="fh">♥</span> · actualizado 2026-11-06 · 43 postulaciones</footer>
 
 <script>
 const APPS = [
@@ -141,6 +141,7 @@ const APPS = [
   {"slug": "darkroom_email_marketing_associate", "co": "Darkroom", "role": "Email Marketing Associate", "fit": 53, "loc": "Remoto (equipo en EST)", "sector": "Agencia de growth DTC", "src": "https://www.linkedin.com/jobs/view/4482407568/", "flag": "\u26a0\ufe0f Horario EST: tu turno de BBVA cae en su ma\u00f1ana (9-13 h EST) \u00b7 piden 2-4 a\u00f1os \u00b7 Klaviyo en aprendizaje", "cv": "cv/main_darkroom_email_marketing_associate.pdf", "cover": "cover_letters/cover_darkroom_email_marketing_associate.pdf"},
   {"slug": "nectar_growth_marketing_klaviyo", "co": "Nectar Life", "role": "Growth Marketing Manager \u2013 Paid Media & Klaviyo (AI-First)", "fit": 52, "loc": "Remoto (fuera de EE.UU./Europa) \u00b7 contractor full-time", "sector": "DTC bienestar", "src": "https://himalayas.app/companies/nectar-life/jobs/growth-marketing-manager-paid-media-klaviyo-ai-first", "flag": "\u26a0\ufe0f Piden adjuntar capturas de Meta Ads, flows de Klaviyo y un anuncio hecho con IA (no existen todav\u00eda) \u00b7 piden 3+ a\u00f1os \u00b7 horario s\u00ed te sirve", "cv": "cv/main_nectar_growth_marketing_klaviyo.pdf", "cover": "cover_letters/cover_nectar_growth_marketing_klaviyo.pdf"},
   {"slug": "irsa_analista_crm", "co": "IRSA Propiedades Comerciales", "role": "Analista de CRM", "fit": 75, "loc": "Buenos Aires \u00b7 modalidad a confirmar", "sector": "Centros comerciales / real estate", "src": "https://www.linkedin.com/jobs/view/4483268082/", "flag": "\u26a0\ufe0f No dice modalidad: pregunt\u00e1 si es remoto antes de postular \u00b7 jornada completa \u00b7 gap: Looker Studio, Emblue", "cv": "cv/main_irsa_analista_crm.pdf", "cover": "cover_letters/cover_irsa_analista_crm.pdf"},
+  {"slug": "accenture_changemakers", "co": "Accenture", "role": "Changemakers Program \u2013 Pasant\u00eda Strategy & Consulting", "fit": 68, "loc": "Mar del Plata \u00b7 h\u00edbrido \u00b7 part-time 20 h/semana", "sector": "Consultor\u00eda global (convenio CAECE, REF 221)", "src": "https://accenture.wd103.myworkdayjobs.com/AccentureCareers/job/Buenos-Aires/Changemakers-Program---Pasantas-Strategy---Consulting_R00365934", "cv": "cv/main_accenture_changemakers.pdf", "cover": "cover_letters/cover_accenture_changemakers.pdf", "flag": "Lleg\u00f3 por CAECE \u00b7 20 h/semana, inicio marzo 2027 \u00b7 gap: sin experiencia en consultor\u00eda, practic\u00e1 casos para la entrevista"},
 ];
 
 const esc = s => (s||"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -148,12 +149,12 @@ const KEY = "handoff_bianca_sent";
 const sent = JSON.parse(localStorage.getItem(KEY) || "{}");
 const cls = f => f>=60?"hi":f>=45?"mid":"lo";
 
-const MDP = new Set(["dept_paid_social","dept_seo_strategy","dept_programmatic","temple_marketing_diseno","aft_pasantia_marketing","mdp_marketing_b2b","perros_responsable_marketing","irsa_asistente_marketing_mdp"]);
+const MDP = new Set(["dept_paid_social","dept_seo_strategy","dept_programmatic","temple_marketing_diseno","aft_pasantia_marketing","mdp_marketing_b2b","perros_responsable_marketing","irsa_asistente_marketing_mdp","accenture_changemakers"]);
 const REACH = new Set(["uala_own_media","assurant_email_mkt","xometry_crm_salesops","bbva_crm_pymes","decentralizedmasters_crm_coordinator","burn20_organic_social","irsa_analista_crm","darkroom_email_marketing_associate","nectar_growth_marketing_klaviyo"]);
 function card(a){
   const isSent = !!sent[a.slug], c = cls(a.fit);
   const flag = a.flag ? `<div class="flag">${esc(a.flag)}</div>` : "";
-  const applyLabel = a.src.startsWith("mailto:") ? "✉️ Postular por mail" : a.src.includes("computrabajo") ? "🔗 Aplicar en Computrabajo" : a.src.includes("getonbrd") ? "🔗 Aplicar en Get on Board" : "🔗 Aplicar en LinkedIn";
+  const applyLabel = a.src.includes("myworkdayjobs") ? "🔗 Aplicar en Workday" : a.src.startsWith("mailto:") ? "✉️ Postular por mail" : a.src.includes("computrabajo") ? "🔗 Aplicar en Computrabajo" : a.src.includes("getonbrd") ? "🔗 Aplicar en Get on Board" : "🔗 Aplicar en LinkedIn";
   const el = document.createElement("article");
   el.className = `card ${c}${isSent?" sent":""}`;
   el.innerHTML = `
